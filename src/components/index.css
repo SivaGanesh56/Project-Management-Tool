@@ -1,0 +1,50 @@
+.pageTitle {
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    color: #7110ab;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 70px;
+}
+
+.listContainer {
+    background-color: #dfe3e6 !important;
+    border-radius: 4px;
+    width: 300px;
+    padding: 8px;
+    margin-right: 9px;
+    height: 100%;
+}
+
+.cardContainer {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.listContainer h4 {
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.listContainer .listHeader {
+    border-bottom: 1px solid #b5a2a2;
+    margin: 2px;
+}
+
+.add-list {
+    float: right;
+    margin-right: 5px;
+}
+
+.add-list-modal form {
+    padding: 10px;
+}
+
+.remove-icon {
+    cursor: pointer;
+    color: red;
+}
