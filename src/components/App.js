@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useRef, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import List from './List';
@@ -13,6 +14,31 @@ const App = () => {
   const [state, dispatch] = useData();
   const [show, setShow] = useState(false);
   const inputRef = useRef();
+
+  const updateStateFromLocalStorage = () => {
+    const localState = localStorage.getItem("state");
+    if (localState) {
+      try {
+        const newState = JSON.parse(localState);
+        dispatch({
+          type: CONSTANTS.UPDATE_STATE,
+          payload: {
+            newState
+          }
+        });
+      } catch (error) {
+        console.log('Error while parsing json from local storage', error);
+      }
+    }
+  }
+
+  window.addEventListener('beforeunload', () => {
+    localStorage.setItem("state", JSON.stringify(state));
+  });
+
+  useEffect(() => {
+    updateStateFromLocalStorage();
+  } ,[]);
 
   const showModal = () => {
 

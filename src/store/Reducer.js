@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import { CONSTANTS } from './constants';
 
 const Reducer = (state, action) => {
-    const { ADD_ITEM, ADD_LIST, DELETE_ITEM, DELETE_LIST, RE_ORDER } = CONSTANTS;
+    const { ADD_ITEM, ADD_LIST, DELETE_ITEM, DELETE_LIST, RE_ORDER, UPDATE_STATE } = CONSTANTS;
     switch (action.type) {
         case ADD_ITEM:
             const { listID, title, description } = action.payload;
@@ -86,6 +86,10 @@ const Reducer = (state, action) => {
                 return modifiedState;
             }
             return newState;  
+        }
+        case UPDATE_STATE: {
+            const { newState } = action.payload;
+            return [ ...newState ];
         }
         default:
             return state;
